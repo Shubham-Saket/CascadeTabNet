@@ -242,18 +242,18 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\coco.json',
-        img_prefix='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\VOC2007\\JPEGImages',
+        ann_file='/content/CascadeTabNet/data/coco.json',
+        img_prefix='/content/CascadeTabNet/data/VOC2007/JPEGImages',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\coco.json',
-        img_prefix='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\VOC2007\\JPEGImages',
+        ann_file='/content/CascadeTabNet/data/coco.json',
+        img_prefix='/content/CascadeTabNet/data/VOC2007/JPEGImages',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\coco.json',
-        img_prefix='C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\VOC2007\\JPEGImages',
+        ann_file='/content/CascadeTabNet/data/coco.json',
+        img_prefix='/content/CascadeTabNet/data/VOC2007/JPEGImages',
         pipeline=test_pipeline))
 # evaluation = dict(interval=1, metric=['bbox'])
 # optimizer
@@ -279,7 +279,7 @@ log_config = dict(
 total_epochs = 36
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = '.'
-load_from = "C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\epoch_24.pth"
-resume_from = '.'
+work_dir = None
+load_from = None
+resume_from = '/content/drive/MyDrive/CascadeTabNet-master/epoch_24.pth'
 workflow = [('train', 1)]
