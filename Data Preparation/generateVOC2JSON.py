@@ -18,12 +18,12 @@ from collections import OrderedDict
 def generateVOC2Json(rootDir,xmlFiles):
   attrDict = dict()
   # Add categories according to you Pascal VOC annotations
-  attrDict["categories"]=[{"supercategory":"none","id":1,"name":"Table"},
-                          {"supercategory":"none","id":2,"name":"cell"},
-                          {"supercategory":"none","id":3,"name":"borderless"}
-        # {"supercategory":"none","id":4,"name":"item_name"},
-        # {"supercategory":"none","id":5,"name":"item_desc"},
-        # {"supercategory":"none","id":6,"name":"price"},
+  attrDict["categories"]=[{"supercategory":"none","id":1,"name":"borderedtable"},
+                          {"supercategory":"none","id":2,"name":"tablecaption"},
+                          {"supercategory":"none","id":3,"name":"borderlesstable"},
+                          {"supercategory":"none","id":4,"name":"headerrows"},
+                          {"supercategory":"none","id":5,"name":"cell"},
+                          {"supercategory":"none","id":6,"name":"bodyrows"}
         # {"supercategory":"none","id":7,"name":"total_price_text"},
         # {"supercategory":"none","id":8,"name":"total_price"},
         # {"supercategory":"none","id":9,"name":"footer"}
@@ -59,7 +59,7 @@ def generateVOC2Json(rootDir,xmlFiles):
                 if(not isinstance(vals, list)):
                   vals = [vals]
                 for val in vals:
-                  if str(val['name']) == value["name"]:
+                  if str(val['name']).lower() == value["name"]:
                     annotation = dict()
                     annotation["iscrowd"] = 0
                     annotation["image_id"] = image_id
@@ -74,7 +74,7 @@ def generateVOC2Json(rootDir,xmlFiles):
                     # Tracking the count
                     if(value["id"] == 1):
                       cnt_bor += 1
-                    if(value["id"] == 2):
+                    if(value["id"] == 5):
                       cnt_cell += 1
                     if(value["id"] == 3):
                       cnt_bless += 1
@@ -101,20 +101,20 @@ def generateVOC2Json(rootDir,xmlFiles):
   # Save the final JSON file
   # jsonString = json.dumps(attrDict)
   jsonString = json.dumps(attrDict, indent = 4, sort_keys=True)
-  with open("/content/drive/My Drive/ICDAR 13 dataset/coco.json", "w") as f:
+  with open("C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\coco.json", "w") as f:
     f.write(jsonString)
 
 # Path to the txt file (see at the top of this script)
-trainFile = "/content/drive/My Drive/ICDAR 13 dataset/coco.txt"
+trainFile = "C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\Data Preparation\\coco.txt"
 trainXMLFiles = list()
 with open(trainFile, "r") as f:
-	for line in f:
-		fileName = line.strip()
-		print(fileName)
-		trainXMLFiles.append(fileName + ".xml")
+  for line in f:
+      fileName = line.strip()
+      print(fileName)
+      trainXMLFiles.append(fileName + ".xml")
 
 # Path to the pascal voc xml files 
-rootDir = "/content/drive/My Drive/ICDAR 13 dataset/2Be Fine Tuned"
+rootDir = "C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\Contract Lock_Lableimg_Table\\Contract Lock_Lableimg_Table"
 
 # Start execution
 generateVOC2Json(rootDir, trainXMLFiles)

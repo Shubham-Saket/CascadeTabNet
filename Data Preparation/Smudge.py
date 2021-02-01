@@ -4,9 +4,9 @@ import numpy as np
 import glob
 
 def basicTransform(img):
-	_, mask = cv2.threshold(img,220,255,cv2.THRESH_BINARY_INV)
-	img = cv2.bitwise_not(mask)
-	return img
+  _, mask = cv2.threshold(img,220,255,cv2.THRESH_BINARY_INV)
+  img = cv2.bitwise_not(mask)
+  return img
 
 PATH_TO_DEST = "/content/drive/My Drive/Main Folder/Dataset/Smudge_Images/"
 PATH_TO_ORIGIAL_IMAGES = "/content/drive/My Drive/Main Folder/Dataset/Orig_Image/"
