@@ -114,7 +114,7 @@ with open(trainFile, "r") as f:
       trainXMLFiles.append(fileName + ".xml")
 
 # Path to the pascal voc xml files 
-rootDir = "C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\Contract Lock_Lableimg_Table\\Contract Lock_Lableimg_Table"
+rootDir = "C:\\Users\\saket\\Desktop\\cascade\\CascadeTabNet\\data\\Contract Lock_Lableimg_Table\\resized_ann"
 
 # Start execution
 generateVOC2Json(rootDir, trainXMLFiles)
