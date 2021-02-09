@@ -9,7 +9,7 @@ def round(x):
     return floor(x)
 
 
-new_image_size = (2000,2000)
+new_image_size = (500,500)
 
 image_dir = r"C:\Users\saket\Desktop\cascade\CascadeTabNet\data\Lableimg\Lableimg"
 annotation_dir = r"C:\Users\saket\Desktop\cascade\CascadeTabNet\data\Contract Lock_Lableimg_Table\Contract Lock_Lableimg_Table"
